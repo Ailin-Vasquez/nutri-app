@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriAGVR — Consultas</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Ccircle cx=%2720%27 cy=%2720%27 r=%2719%27 fill=%27%23E1EFDF%27/%3E%3Cpath d=%27M20 30C13 30 9 25.5 9 19c0-4 2-7 4-9 1.3 3 3.3 4.6 5.7 5.4C17.6 12 18.6 9 21 7c1.2 4 3.4 6 5.6 7.6C29.4 16.6 31 19 31 22c0 5-4.5 8-11 8Z%27 fill=%27%232E7D4F%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <div id="navbar"></div>
+
+    <div class="card">
+      <h3 id="form-consulta-titulo">Nueva consulta</h3>
+      <p class="hint">Selecciona al paciente ya registrado; no vuelve a pedirte su peso ni su altura.</p>
+
+      <div id="sin-pacientes-aviso" class="alert alert-error" hidden>
+        Registra al menos un paciente antes de crear una consulta. <a href="pacientes.html" style="text-decoration:underline;">Ir a Pacientes</a>.
+      </div>
+      <div id="consulta-alert"></div>
+
+      <form id="form-consulta" novalidate>
+        <div class="field">
+          <label for="c-paciente">Paciente</label>
+          <select id="c-paciente"></select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="c-dia">Día</label>
+            <input id="c-dia" type="date">
+          </div>
+          <div class="field">
+            <label for="c-hora">Hora</label>
+            <input id="c-hora" type="time">
+          </div>
+        </div>
+        <div class="field">
+          <label for="c-evolucion">Evolución del paciente</label>
+          <textarea id="c-evolucion" rows="2" placeholder="p. ej. Bajó 1.5 kg desde la última consulta, refiere más energía…"></textarea>
+        </div>
+        <div class="field">
+          <label for="c-plan">Plan de alimentación</label>
+          <textarea id="c-plan" rows="2" placeholder="p. ej. Aumentar proteína en desayuno, reducir azúcares simples…"></textarea>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="submit" class="btn btn-primary" id="btn-guardar-consulta">Registrar consulta</button>
+          <button type="button" class="btn btn-ghost" id="btn-cancelar-edicion" hidden>Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Historial de consultas</h3>
+      <p class="hint">Todas las consultas registradas en este navegador.</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr><th>Paciente</th><th>Día</th><th>Hora</th><th>Evolución</th><th>Plan de alimentación</th><th></th></tr>
+          </thead>
+          <tbody id="historial-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="foot">NutriAGVR &mdash; las consultas se guardan por paciente, sin duplicar sus datos.</footer>
+  </div>
+
+  <script type="module" src="js/pantallas/consultas.js"></script>
+</body>
+</html>
