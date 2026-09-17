@@ -51,53 +51,5 @@ colgados directamente del `<head>`.
 `protegerPantalla()` (`js/logica/guard.js`) antes de pintar nada: si no
 hay sesión, redirigen de inmediato a `index.html` — escribir la URL
 directamente en la barra no da acceso.
-
-## Probarlo en tu computadora
-
-Los módulos de JavaScript (`type="module"`) no funcionan abriendo el
-HTML directo con doble clic (bloqueo de CORS del navegador con
-`file://`). Necesitas un servidor local muy simple:
-
-```bash
-cd nutrix-app
-npx serve .
-# o bien:
-python3 -m http.server 8080
-```
-
-Y abre `http://localhost:8080` (o el puerto que indique la terminal).
-Cuenta de prueba: usuario `demo`, contraseña `demo123`.
-
-## Subirlo a GitHub
-
-```bash
-cd nutrix-app
-git init
-git add .
-git commit -m "NutriAGVR: login, pacientes con IMC y consultas"
-git branch -M main
-git remote add origin https://github.com/<tu-usuario>/nutrix.git
-git push -u origin main
-```
-
-## Desplegarlo (Vercel o Netlify)
-
-Es un sitio estático puro: no hay comando de build ni carpeta de
-salida especial.
-
-**Vercel**
-1. En el dashboard de Vercel: *Add New → Project* e importa el
-   repositorio de GitHub.
-2. Framework Preset: `Other`. Build Command: (vacío). Output
-   Directory: `.` (la raíz).
-3. Deploy.
-
-**Netlify**
-1. *Add new site → Import an existing project* y elige el repositorio.
-2. Build command: (vacío). Publish directory: `.` (la raíz).
-3. Deploy site.
-
-Antes de entregar, abre el enlace público y navega las 5 pantallas
-para confirmar que no quede ninguna pantalla en blanco ni enlace roto
 (cuidado con mayúsculas/minúsculas en los nombres de archivo: en
 Linux/Vercel `Index.html` y `index.html` son rutas distintas).
